@@ -17,16 +17,19 @@ class DashboardController extends Controller
     {
 
         $activities = Activity::where('user_id', auth()->id())
+            ->with('user')
             ->with('action')
             ->with([
                 'post' => function (Builder|\Illuminate\Database\Eloquent\Builder $query) {
                     return $query
                         ->with('user')
-                        ->with('retweets');
+                        ->with('retweets', fn(Builder|\Illuminate\Database\Eloquent\Builder $query) => $query
+                            ->where('user_id', auth()->id())
+                        );
                 },
             ])
-            ->latest()
-            ->take(1)
+            ->latest('id')
+            ->take(3)
             ->get();
 
 

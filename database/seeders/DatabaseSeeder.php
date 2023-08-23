@@ -40,24 +40,24 @@ class DatabaseSeeder extends Seeder
         Activity::create([
             'action_id' => 3,
             'user_id' => 1,
-            'post_id' => 1,
+            'post_id' => 10,
         ]);
 
         Activity::create([
             'action_id' => 3,
-            'user_id' => 2,
-            'post_id' => 2,
+            'user_id' => 1,
+            'post_id' => 11,
         ]);
 
         Retweet::create([
             'user_id' => 1,
-            'post_id' => 1,
+            'post_id' => 10,
             'body' => 'This is a retweet 1',
         ]);
 
         Retweet::create([
-            'user_id' => 2,
-            'post_id' => 2,
+            'user_id' => 1,
+            'post_id' => 11,
             'body' => 'This is a retweet 2',
         ]);
 

@@ -24,7 +24,7 @@ class Post extends Model
 
     public function retweets(): HasMany
     {
-        return $this->hasMany(Retweet::class);
+        return $this->hasMany(Retweet::class,'post_id');
     }
 
 
