@@ -36,5 +36,30 @@ class DatabaseSeeder extends Seeder
                 Activity::factory(5)->make()->toArray()
             ));
 
+
+        Activity::create([
+            'action_id' => 3,
+            'user_id' => 1,
+            'post_id' => 1,
+        ]);
+
+        Activity::create([
+            'action_id' => 3,
+            'user_id' => 2,
+            'post_id' => 2,
+        ]);
+
+        Retweet::create([
+            'user_id' => 1,
+            'post_id' => 1,
+            'body' => 'This is a retweet 1',
+        ]);
+
+        Retweet::create([
+            'user_id' => 2,
+            'post_id' => 2,
+            'body' => 'This is a retweet 2',
+        ]);
+
     }
 }

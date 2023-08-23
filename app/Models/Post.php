@@ -22,9 +22,9 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function retweets(): BelongsToMany
+    public function retweets(): HasMany
     {
-        return $this->belongsToMany(Retweet::class, 'post_retweet', 'post_id', 'retweet_id');
+        return $this->hasMany(Retweet::class);
     }
 
 
