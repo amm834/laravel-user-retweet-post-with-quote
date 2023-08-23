@@ -12,6 +12,11 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
+
+
+            <div>
+                {{ $user->name }}
+            </div>
         </div>
     </div>
 </x-app-layout>
