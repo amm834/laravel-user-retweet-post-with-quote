@@ -13,9 +13,17 @@
                 </div>
             </div>
 
+            @foreach($activities as $activity)
+                <div>
+                    {{ $activity->user->name }}
+                    <b>{{ $activity->action->name }}</b> on post
+                    {{ $activity->post->title }} at
+                    {{ $activity->created_at->diffForHumans() }}
+                    of {{ $activity->post->user->name }}
+                </div>
+            @endforeach
 
             <div>
-                {{ $user->name }}
             </div>
         </div>
     </div>

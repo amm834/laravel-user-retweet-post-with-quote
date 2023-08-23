@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
+use App\Models\Retweet;
+use App\Models\User;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,8 +16,25 @@ class DashboardController extends Controller
     public function __invoke(Request $request)
     {
 
-        $user = auth()->user();
+        $activities = Activity::where('user_id', auth()->id())
+            ->with('action')
+            ->with([
+                'post' => function (Builder|\Illuminate\Database\Eloquent\Builder $query) {
+                    return $query
+                        ->with('user')
+                        ->with('retweets');
+                },
+            ])
+            ->latest()
+            ->take(1)
+            ->get();
 
-        return view('dashboard', compact('user'));
+
+        return response()->json($activities);
+
+//        return view('dashboard', [
+//            'activities' => $activities
+//        ]);
+
     }
 }

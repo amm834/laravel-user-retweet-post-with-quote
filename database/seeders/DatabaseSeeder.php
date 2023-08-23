@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Action;
 use App\Models\Activity;
 use App\Models\Post;
+use App\Models\Retweet;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -34,5 +35,6 @@ class DatabaseSeeder extends Seeder
             ->each(fn(User $user) => $user->activities()->createMany(
                 Activity::factory(5)->make()->toArray()
             ));
+
     }
 }
